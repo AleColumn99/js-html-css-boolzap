@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" /> <!-- fontawsome -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> <!-- lato font -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> <!-- vue -->
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Document</title>
+
+  </head>
+
+  <body>
+
+    <div id="app" class="container">
+
+      <aside class="left">
+
+        <header>
+
+          <div class="top-header">
+            <div class="top-header-profile float-left">
+              <img :src="'assets/img/avatar'+ user.avatar +'.jpg'">
+              <h4>{{user.name}}</h4>
+            </div>
+            <div class="top-header-icons float-right">
+              <i class="fas fa-circle-notch"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+
+          <div class="bottom-header">
+            <div class="bottom-header-icon">
+              <i class="fas fa-bell-slash"></i>
+            </div>
+            <div class="bottom-header-text">
+              <h4>Ricevi notifiche di nuovi messaggi</h4>
+              <span><a href="#">Attiva notifiche desktop</a></span>
+            </div>
+          </div>
+
+        </header>
+
+        <section>
+
+          <div class="contact-searchbar">
+            <!-- <input type="text" placeholder="Cerca o inizia una nuova chat"> -->
+            <label class="search-label" for="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </label>
+            <input 
+              id="contacts-filter"
+              class="contact-searchbar-input"
+              placeholder="Cerca o inizia una nuova chat"
+              name="search"
+            >
+          </div>
+        
+          <div class="contacts-list">
+
+            <div v-for="contact in contacts" class="contact">
+              <img :src="'assets/img/avatar'+ contact.avatar +'.jpg'">
+              <h4>{{ contact.name }}</h4>
+            </div>
+
+          </div>
+
+        </section>
+
+      </aside>
+
+      <main v-for="contact in contacts" class="right">
+        
+        <div class="chat-header">
+          <div class="chat-header-profile float-left">
+            <img :src="'assets/img/avatar'+ contact.avatar +'.jpg'">
+            <div class="chat-name-time">
+              <h4>{{contact.name}}</h4>
+              <h6>time</h6>
+           </div>
+          </div>
+          <div class="chat-header-icons float-right">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-paperclip"></i>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </div>
+
+        <div v-for="message in contact" class="chat-messages">
+          <!-- <div :class="message 'status'">
+            <span class="message-text">{{ message.text }}</span> 
+            <span class="message-time">{{ message.date }}</span>
+            <i class="fa fa-chevron-down float-right message-options"></i>
+          </div> -->
+          <div class="message sent">
+            <span class="message-text">Ricordati di dargli da mangiare</span> 
+            <span class="message-time"> 10/01/2020 15:50:00</span>
+            <i class="fa fa-chevron-down float-right message-options"></i>
+          </div>
+          <!-- <div class="message received">
+            <span class="message-text">Tutto fatto!</span> 
+            <span class="message-time"> 10/01/2020 16:15:22</span> 
+            <i class="fa fa-chevron-down float-right message-options"></i>
+          </div> -->
+        </div>
+
+        <div class="chat-footer">
+          <div class="chat-footer-icon float-left">
+            <i class="far fa-smile"></i>
+          </div>
+          <input class="new-message-inputs" placeholder="Scrivi un messaggio">
+          <div class="chat-footer-icon float-right">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+	<script src="assets/js/script.js"></script>
+    
+  </body>
+
+</html>
