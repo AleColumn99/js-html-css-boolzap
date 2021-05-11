@@ -69,7 +69,11 @@
         
           <div class="contacts-list">
 
-            <div v-for="contact in contacts" class="contact">
+            <div 
+              v-for="(contact, index) in contacts"
+              class="contact"
+              :class="contactActive === index ? active : null"
+              @click="contactActive = index">
               <img :src="'assets/img/avatar'+ contact.avatar +'.jpg'">
               <h4>{{ contact.name }}</h4>
             </div>
@@ -80,13 +84,13 @@
 
       </aside>
 
-      <main v-for="contact in contacts" class="right">
+      <main class="right">
         
         <div class="chat-header">
           <div class="chat-header-profile float-left">
-            <img :src="'assets/img/avatar'+ contact.avatar +'.jpg'">
+            <img :src="`assets/img/avatar${contacts[contactActive].avatar}.jpg`">
             <div class="chat-name-time">
-              <h4>{{contact.name}}</h4>
+              <h4>{{ contacts[contactActive].name }}</h4>
               <h6>time</h6>
            </div>
           </div>
@@ -97,22 +101,16 @@
           </div>
         </div>
 
-        <div v-for="message in contact" class="chat-messages">
-          <!-- <div :class="message 'status'">
+        <div class="chat-messages">
+          <div
+           v-for="message in contacts[contactActive].messages"
+           class="message"
+           :class="message.status"
+          >
             <span class="message-text">{{ message.text }}</span> 
             <span class="message-time">{{ message.date }}</span>
             <i class="fa fa-chevron-down float-right message-options"></i>
-          </div> -->
-          <div class="message sent">
-            <span class="message-text">Ricordati di dargli da mangiare</span> 
-            <span class="message-time"> 10/01/2020 15:50:00</span>
-            <i class="fa fa-chevron-down float-right message-options"></i>
           </div>
-          <!-- <div class="message received">
-            <span class="message-text">Tutto fatto!</span> 
-            <span class="message-time"> 10/01/2020 16:15:22</span> 
-            <i class="fa fa-chevron-down float-right message-options"></i>
-          </div> -->
         </div>
 
         <div class="chat-footer">

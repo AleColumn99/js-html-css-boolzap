@@ -91,7 +91,94 @@ const app = new Vue ({
           }
         ],
       },
-    ]
+      {
+        name: 'Marco',
+        avatar: '_5',
+        visible: true,
+        messages: [
+          {
+            date: '10/01/2020 15:30:55',
+            text: 'Oh ma sto Leclerc?',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            text: 'Che pilota pazzesco mamma mia',
+            status: 'received'
+          },
+          {
+            date: '10/01/2020 15:56:35',
+            text: 'Fa dei sorpassi clamorosi',
+            status: 'sent'
+          }
+        ],
+      },
+      {
+        name: 'Anna',
+        avatar: '_6',
+        visible: true,
+        messages: [
+          {
+            date: '10/01/2020 15:30:55',
+            text: 'Tu chi prenderesti fossi in Toto?',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            text: 'Russell tutta la vita!',
+            status: 'received'
+          }
+        ],
+      },
+      {
+        name: 'Luca',
+        avatar: '_7',
+        visible: true,
+        messages: [
+          {
+            date: '10/01/2020 15:30:55',
+            text: 'Oh ma sto Leclerc?',
+            status: 'received'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            text: 'Che pilota pazzesco mamma mia',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:56:35',
+            text: 'Fa dei sorpassi clamorosi',
+            status: 'received'
+          }
+        ],
+      },
+      {
+        name: 'Davide',
+        avatar: '_8',
+        visible: true,
+        messages: [
+          {
+            date: '10/01/2020 15:30:55',
+            text: 'Oh ma sto Leclerc?',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            text: 'Che pilota pazzesco mamma mia',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:56:35',
+            text: 'Fa dei sorpassi clamorosi',
+            status: 'received'
+          }
+        ],
+      }
+    ],
+    contactActive: 0
+
+  },
+  mounted() {
 
   },
   methods: {
