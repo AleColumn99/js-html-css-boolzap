@@ -63,6 +63,8 @@
               class="contact-searchbar-input"
               placeholder="Cerca o inizia una nuova chat"
               name="search"
+              v-model="contactSearch"
+              @keydown="searchContact(contacts)"
             >
           </div>
         
@@ -72,15 +74,10 @@
               v-for="(contact, index) in contacts"
               class="contact"
               :class="contactActive === index ? active : null"
-              @click="contactActive = index">
+              @click="contactActive = index"
+              v-if="visible">
               <img :src="'assets/img/avatar'+ contact.avatar +'.jpg'">
-              <div class="name-date">
-                <div class="name-message">
-                  <h4>{{ contact.name }}</h4>
-                  <span>{{ lastMessage(index) }}</span>
-                </div>
-                <span class="time">{{ lastAccess(index) }}</span>
-              </div>
+              <h4>{{ contact.name }}</h4>
             </div>
 
           </div>
@@ -96,7 +93,7 @@
             <img :src="`assets/img/avatar${contacts[contactActive].avatar}.jpg`">
             <div class="chat-name-time">
               <h4>{{ contacts[contactActive].name }}</h4>
-              <h6>{{ lastAccess(contactActive) }}</h6>
+              <h6>time</h6>
            </div>
           </div>
           <div class="chat-header-icons float-right">
@@ -122,13 +119,9 @@
           <div class="chat-footer-icon float-left">
             <i class="far fa-smile"></i>
           </div>
-          <input
-            v-model="inputMessage"
-            class="new-message-inputs"
-            placeholder="Scrivi un messaggio"
-            @keyup.enter="sendMessage()">
+          <input v-model="inputMessage" class="new-message-inputs" placeholder="Scrivi un messaggio" @keyup.enter="sendMessage(contacts[contactActive])">
           <div class="chat-footer-icon float-right">
-            <i class="fa fa-microphone" aria-hidden="true"></i>
+            <i class="fa fa-microphone" aria-hidden="true" @click="sendMessage(contacts[contactActive])"></i>
           </div>
         </div>
 
@@ -138,9 +131,7 @@
 
     <!-- JAVASCRIPT -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
-
-	  <script src="assets/js/script.js"></script>
+	<script src="assets/js/script.js"></script>
     
   </body>
 
