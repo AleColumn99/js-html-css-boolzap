@@ -114,7 +114,7 @@ const app = new Vue ({
         ],
       },
       {
-        name: 'Anna',
+        name: 'Maria',
         avatar: '_6',
         visible: true,
         messages: [
@@ -175,35 +175,62 @@ const app = new Vue ({
         ],
       }
     ],
-    contactActive: 0
-
-  },
-  mounted() {
+    contactActive: 0,
+    responses: [
+      'Assolutamente no!',
+      'Bella ideaa',
+      'Tu dici?',
+      'Ok può andare',
+      'No dai questo no',
+      'Bellissimooo',
+      'Sei un folle fra'
+    ]
 
   },
   methods: {
 
-    sendMessage(contact) {
-      contact.messages.push({
-        date: '11/05/2021 11:15:00',
-        text: this.inputMessage,
-        status: 'sent'
-      });
-      this.inputMessage = '';
-      setTimeout(() => {
-        contact.messages.push({
-          date: '11/05/2021 11:15:10',
-          text: 'OK',
-          status: 'received'
-        });
-      }, 1000);
+    sendMessage() {
+      if(this.inputMessage.length > 0) {
+
+        this.pushMessage(this.inputMessage, 'sent')
+        this.inputMessage = '';
+
+        setTimeout(() => {
+          let response = this.responses[Math.floor(Math.random() * this.responses.length-1) + 1];
+          this.pushMessage(response, 'received')
+        }, 1000);
+      }
     },
-    searchContact(contacts) {
-      for(contact in contacts) {
-        if (contact.name.includes(searchContact)) {
-          contact.visible = true;
+    pushMessage(text, status) {
+      this.contacts[this.contactActive].messages.push({
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+        text: text,
+        status: status
+      });
+    },
+    lastAccess(index) {
+      let contactMessages = this.contacts[index].messages;
+      return contactMessages[contactMessages.length-1].date;
+    },
+    lastMessage(index) {
+      let messages = this.contacts[index].messages;
+      if(messages[messages.length-1].text.length > 30) {
+        let splicedMsg = messages[messages.length-1].text.slice(0, 30) + "...";
+        return splicedMsg;
+      } else {
+        return messages[messages.length-1].text;
+      }
+    },
+    findContacts(string) {
+      let newString = string.toUpperCase();
+      console.log(newString);
+      for (counter in this.contacts) {
+        let nameString = this.contacts[counter].name.toUpperCase();
+        console.log(nameString);
+        if (nameString.includes(newString)) {
+          this.contacts[counter].visible = true;
         } else {
-          contact.visible = false;
+          this.contacts[counter].visible = false;
         }
       }
     }

@@ -123,6 +123,10 @@ body {
   margin: 0 10px;
 }
 
+.container .left section {
+  height: calc(100% - 140px);
+}
+
 /* lista contatti e ricerca */
 
 .container .left section .contact-searchbar {
@@ -158,7 +162,7 @@ body {
 
 .container .left section .contacts-list {
   width: 100%;
-  height: calc(100% - 190px);
+  height: calc(100% - 50px);
   overflow-y: scroll;
 }
 
@@ -176,6 +180,22 @@ body {
   border-radius: 50%;
   height: 60px;
   margin-right: 20px;
+}
+
+.container .left section .contacts-list .contact .name-date {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container .left section .contacts-list .contact .name-date .name-message span {
+  font-size: 12px;
+}
+
+.container .left section .contacts-list .contact .name-date .time {
+  font-size: 10px;
+  max-width: 60px;
+  margin-left: 10px;
 }
 
 /* chat (dx) */
@@ -210,6 +230,10 @@ body {
   border-radius: 50%;
   height: 50px;
   margin-right: 10px;
+}
+
+.container .right .chat-header-profile .chat-name-time h4 {
+  margin-bottom: 5px;
 }
 
 .container .right .chat-header-icons {
@@ -248,6 +272,7 @@ body {
   background: #FFFFFF;
   border-radius: 10px;
   font-size: 15px;
+  word-wrap: break-word;
 }
 
 .container .right .chat-messages .message::after {
